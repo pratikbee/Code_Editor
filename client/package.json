@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "serve": "webpack serve --mode development",
-    "build":"webpack --mode production"
+    "build": "webpack --mode production"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ace-builds": "^1.7.1",
     "react": "^18.2.0",
+    "react-ace": "^10.1.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
