@@ -2,17 +2,16 @@ import React from "react";
 import "./App.scss";
 
 import { Form, FormGroup, Col } from "react-bootstrap";
-import AlertDismissable from "./AlertDismissable";
+
+import Output from "./Output";
+import StatusImage from "./StatusImage";
 
 const App = () => {
   return (
     <Form>
     <FormGroup>
       <Col sm={12}>
-        <AlertDismissable
-          show={true}
-          message="haha"
-        ></AlertDismissable>
+        <StatusImage message="hah"></StatusImage>
       </Col>
     </FormGroup>
     </Form>
