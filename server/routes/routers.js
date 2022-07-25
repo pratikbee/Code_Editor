@@ -1,14 +1,14 @@
 
 
-import { Router } from 'express';
-import getLang from '../controllers/getLang.js';
-import postCode from '../controllers/postCode.js';
+const Router=require('express')
+const min= require('../controllers/getLang.js');
+const max= require( '../controllers/postCode.js');
 
 const miniapp=Router();
 
 
-miniapp.get('/',getLang)
-miniapp.get('/code',postCode)
+miniapp.get('/',min.getLang)
+miniapp.post('/code',max.postCode)
 
 
-export default miniapp;
+module.exports={miniapp};

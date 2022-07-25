@@ -1,6 +1,6 @@
-import express from 'express';
-import cors from 'cors';
-import miniapp from './routes/routers.js';
+const express =require('express')
+const cors=require('cors')
+const min = require( './routes/routers.js');
 
 
 
@@ -10,7 +10,7 @@ app.use(express.json())
 app.use(cors());
 
 const port=5000;
-app.use('/',miniapp)
+app.use('/',min.miniapp)
 
 
 

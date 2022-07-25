@@ -1,5 +1,10 @@
-export default async function getLang(req,res)
+
+
+module.exports={
+  getLang(req,res)
 {
     
     res.send('getLang activated')
 }
+}
+

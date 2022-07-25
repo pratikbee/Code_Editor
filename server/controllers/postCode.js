@@ -1,5 +1,10 @@
-
-export default async function postCode(req,res)
+const run=require('../Runners/RunnerManager.js')
+module.exports={ postCode(req,res)
 {
-    res.send("postCode Activated")
+    const file=req.body;
+    res.send(file)
+    run(file.lang,file.code,res)
+
+
+}
 }
