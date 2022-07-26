@@ -1,17 +1,18 @@
-import {spawn} from 'child_process';
+const {spawn}=require('child_process');
 
-import Runner from './Runner.js';
+const Runner=require('./Runner.js')
 
 
 class PythonRunner extends Runner {
+  constructor() {
+    super();
+    this.defaultfile = 'Hello.py';
+  }
     defaultFile() {
       return this.defaultfile;
     }
   
-    constructor() {
-      super();
-      this.defaultfile = 'Hello.py';
-    }
+   
   
     run(file, directory, filename, extension, callback) {
       if (extension.toLowerCase() !== '.py') {
@@ -29,10 +30,12 @@ class PythonRunner extends Runner {
       console.log(`argsRun: ${argsRun}`);
       const executor = spawn('python', argsRun, options);
       executor.stdout.on('data', (output) => {
-        console.log(String(output));
+        var data=output.toString()
+        console.log(data);
         callback('0', String(output)); // 0, no error
       });
       executor.stderr.on('data', (output) => {
+        
         console.log(`stderr: ${String(output)}`);
         callback('2', String(output)); // 2, execution failure
       });

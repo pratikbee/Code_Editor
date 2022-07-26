@@ -1,7 +1,8 @@
 const path=require('path')
 
-// import FileApi from '../api/FileApi.js'
-// import Pyrunner from "./PyRunner.js"
+
+const FileApi=require( '../api/FileApi.js');
+const Pyrunner =require( "./PyRunner.js");
 
 
 
@@ -20,14 +21,15 @@ class Factory {
     }
 }
 
-module.exports={run(lang,code,res)
+module.exports=
+{run(lang,code,res)
 {
-      console.log(lang)
-      console.log(code)
+      
+      
       
         const factory=new Factory();
         const runner=factory.createRunner(lang.toLowerCase());
-
+        
         const Directory=path.join(__dirname,'templates');
         const File=path.join(Directory,runner.defaultFile());
         const filename=path.parse(File).main;

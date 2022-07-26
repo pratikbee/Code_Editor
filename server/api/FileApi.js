@@ -1,7 +1,7 @@
-import mkdirp from 'mkdirp';
-import fs from 'fs';
+const mkdirp=require('mkdirp')
+const fs= require('fs');
 
-import path from 'path';
+const path=require('path')
 const getDirName=path.dirname;
  
 module.exports = {
@@ -34,7 +34,7 @@ module.exports = {
  
   saveFile(file, code, callback) {
     // create parent directories if they doesn't exist.
-    mkdirp(getDirName(file), (err) => {
+    fs.mkdir(getDirName(file),{recursive:true}, (err) => {
       if (err) return callback(err);
  
       return fs.writeFile(file, code, (err2) => {
