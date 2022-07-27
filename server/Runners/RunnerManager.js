@@ -42,7 +42,8 @@ module.exports=
                 status,
                 message,
               };
-              res.end(JSON.stringify(result));
+              return res.send(JSON.stringify(result))
+              
             });
           });
 
