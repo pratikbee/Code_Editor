@@ -7,7 +7,7 @@ import error from './error.png';
 
 const StatusImage=(props)=>{
     
-        if(props.message==="error"){
+        if(props.hasError){
             return(<Image src={error} rounded></Image>)
         }
         else{

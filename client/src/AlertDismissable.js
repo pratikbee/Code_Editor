@@ -5,13 +5,11 @@ import Alert from 'react-bootstrap/Alert';
 
 const AlertDismissable=(props)=>{
     const [state,setState]=useState(props.show);
-    console.log(state)
+    
     function handleDismiss(){
         setState(false)
     }
-    function handleAlertShow(){
-        setState(true)
-    }
+    
     return(
         
             state?<Alert variant="danger" onClose={()=>
