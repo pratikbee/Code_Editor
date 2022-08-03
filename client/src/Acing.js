@@ -43,7 +43,7 @@ return(
   value={props.code}
   width="100%"
   height="200px"
-  mode="c_cpp"
+  mode="javascript"
   theme="github"
   name="aceCodeEditor"
   // onLoad={this.onLoad}

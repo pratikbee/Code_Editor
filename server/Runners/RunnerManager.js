@@ -4,7 +4,8 @@ const path=require('path')
 const FileApi=require( '../api/FileApi.js');
 const Pyrunner = require("./PyRunner.js");
 const Cpprunner = require("./CppRunner.js");
-const Crunner=require("./Crunner.js")
+const Crunner = require("./Crunner.js")
+const JSrunner=require('./JSrunner.js')
 
 
 
@@ -22,8 +23,12 @@ class Factory {
      else if (lang == ".cpp") {
        runner = new Cpprunner();
      }
-     else if (lang == ".c") { 
+     else if (lang == ".c") {
        runner = new Crunner();
+     }
+
+     else if (lang == ".js") { 
+       runner = new JSrunner();
      }
      
         return runner;
