@@ -13,7 +13,7 @@ const Editor=()=>{
     const [state,setState] = useState({
         selectedLang: 0, // JavaScript
         task: {
-          lang: 'javascript',
+          lang: 'C++',
           code: '',
         },
         response: {

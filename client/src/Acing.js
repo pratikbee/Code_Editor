@@ -7,6 +7,7 @@ import 'brace/mode/javascript';
 import 'brace/theme/github';
 import "brace/theme/monokai";
 import 'brace/mode/python';
+import 'brace/mode/c_cpp'
 
 
 const Acing=(props)=>{
@@ -20,7 +21,7 @@ const Acing=(props)=>{
         {
           selectedLang: 0, // JavaScript
           task: {
-            lang: 'python',
+            lang: '',
             code: val,
           },
           response: {
@@ -42,7 +43,7 @@ return(
   value={props.code}
   width="100%"
   height="200px"
-  mode="python"
+  mode="c_cpp"
   theme="github"
   name="aceCodeEditor"
   // onLoad={this.onLoad}

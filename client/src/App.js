@@ -13,7 +13,7 @@ const App = () => {
   const [state,setState] = useState({
     selectedLang: 0, // JavaScript
     task: {
-      lang: 'python',
+      lang: 'C++',
       code: '',
     },
     response: {
@@ -40,7 +40,7 @@ const App = () => {
      
     
     body: JSON.stringify({
-        lang:".py",
+        lang:".cpp",
         code:state.task.code
     }),
      
