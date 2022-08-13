@@ -10,46 +10,67 @@ let languages = ['JavaScript', 'Python', 'Java', 'C', 'C++'];
 
 
 const Editor=()=>{
-    const [state,setState] = useState({
-        selectedLang: 0, // JavaScript
-        task: {
-          lang: 'C++',
-          code: '',
-        },
-        response: {
-          status: '0',
-          message: '',
-        },
-      })
-      console.log(state)
-      function handleCodeChange(code) {
-        const { task } = state;
-        task.code = code;
-        console.log(code);
-        return setState({ task });
-      }
-    
-      function handleRun(event) {
-        event.preventDefault();
-        const { task } = state;
-        ;
-        CompilerApi.run(task)
-          .then((res) => {
-            setState({ response: res });
-          })
-          .catch((error) => {
-            console.log(error);
-            
-          });
-      }
+     const languages = [".py", ".cpp", ".c", ".js"];
+     const [state, setState] = useState({
+       selectedLang: 0, // JavaScript
+       task: {
+         lang: ".py",
+         code: "",
+       },
+       response: {
+         status: "0",
+         message: "",
+       },
+     });
+
+    function handleRun(event) {
+        if (state.selectedLang === "none") { 
+            alert("Please select one language")
+            return
+        }
+       event.preventDefault();
+       const { task } = state;
+       fetch("http://localhost:5000/code", {
+         method: "POST",
+
+         body: JSON.stringify({
+           lang: state.selectedLang,
+           code: state.task.code,
+         }),
+
+         headers: {
+           "Content-type": "application/json; charset=UTF-8",
+         },
+       })
+         .then((response) => response.json())
+
+         .then((res) => {
+           const { response } = state;
+             response.message = res.message;
+             response.status = res.status;
+             return setState({
+               selectedLang: state.selectedLang,
+               task: {
+                 lang: state.selectedLang,
+                 code: state.task.code,
+               },
+               response: response,
+             });
+         });
+     }
+     function handleLangChange(Event) {
+         setState({ ...state, selectedLang: Event.target.value });
+        
+       
+     }
     return(
-        <div className="container">
-            <Form horizontal>
+        <div className="container" style={{maxWidth:"80%"}}>
+            <Form horizontal="true">
                 <FormGroup controlId="code">
                     <Col sm={12}>
                         <LangSelector
                         langs={languages}
-                        selectedIndex={state.selectedLang}
+                        selectedIndex={state}
                         onChange={handleLangChange}>
 
                         </LangSelector>
@@ -60,8 +81,8 @@ const Editor=()=>{
                 <FormGroup controlId="code">
                     <Col sm={12}>
                         <Acing
-                        setState={setState}
-                        state={state}>
+                        settingState={setState}
+                        newstate={state}>
 
                         </Acing>
                     </Col>
@@ -83,8 +104,8 @@ const Editor=()=>{
                 <FormGroup>
                     <Col sm={12}>
                         <AlertDismissable
-                        show={state.response.status!=="0"}
-                        message={state.response.message}>
+                        newstate={state}
+                        setnewState={setState}>
 
                         </AlertDismissable>
                     </Col>

@@ -5,7 +5,8 @@ const FileApi=require( '../api/FileApi.js');
 const Pyrunner = require("./PyRunner.js");
 const Cpprunner = require("./CppRunner.js");
 const Crunner = require("./Crunner.js")
-const JSrunner=require('./JSrunner.js')
+const JSrunner = require('./JSrunner.js')
+const Javarunner=require('./Javarunner')
 
 
 
@@ -27,12 +28,18 @@ class Factory {
        runner = new Crunner();
      }
 
-     else if (lang == ".js") { 
+     else if (lang == ".js") {
        runner = new JSrunner();
      }
+
+     else if (lang == ".java") { 
+       runner = new Javarunner();
+     }
+     return runner
      
-        return runner;
-    }
+       
+  }
+  
 }
 
 module.exports=
@@ -45,21 +52,22 @@ module.exports=
         const runner=factory.createRunner(lang.toLowerCase());
         
         const Directory=path.join(__dirname,'templates');
-        const File=path.join(Directory,runner.defaultFile());
-        const filename=path.parse(File).main;
-        const extension=path.parse(File).ext;
+  const File = path.join(Directory, runner.defaultFile());
+ 
+  const filename = path.parse(File).main;
+  const extension = path.parse(File).ext;
 
 
-        FileApi.saveFile(File, code, () => {
-            runner.run(File, Directory, filename, extension, (status, message) => {
-              const result = {
-                status,
-                message,
-              };
-              return res.send(JSON.stringify(result))
+  FileApi.saveFile(File, code, () => {
+    runner.run(File, Directory, filename, extension, (status, message) => {
+      const result = {
+        status,
+        message,
+      };
+      return res.send(JSON.stringify(result))
               
-            });
-          });
+    });
+  });
 
     }
   }

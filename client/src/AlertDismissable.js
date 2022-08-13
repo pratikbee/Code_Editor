@@ -1,31 +1,62 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Alert from 'react-bootstrap/Alert';
+import 'react-bootstrap/Button';
 
 
-const AlertDismissable=(props)=>{
-    const [state,setState]=useState(props.show);
+const AlertDismissable = ({newstate,setnewState}) => {
     
-    function handleDismiss(){
-        setState(false)
+    
+    
+    
+    
+    
+    function handleDismiss() {
+        return setnewState({
+          selectedLang: newstate.selectedLang,
+          task: {
+            lang: newstate.selectedLang,
+            code: newstate.task.code,
+          },
+            response: {
+                status: "0",
+                message:""
+          },
+        });
+        
     }
     
-    return(
-        
-            state?<Alert variant="danger" onClose={()=>
-                {handleDismiss()}}
-                dismissible>
-            <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-            <p style={{whiteSpace:"pre-wrap"}}>{props.message}</p>
-            </Alert>:
-            <div><p>Alert</p></div>
-        
-    )
+    return newstate.response.status === "0" ? (
+      <div>
+        <p></p>
+      </div>
+    ) : (
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Holy guacamole!</strong> You should check in on some of those
+        fields below.
+          <button
+            onClick={() => { handleDismiss() }}
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        >Click to dismiss</button>
+      </div>
+      // <Alert
+      //     variant="danger"
+
+      //   onClose={() => {
+      //     handleDismiss();
+      //   }}
+      //   dismissible
+      // >
+      //   <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+
+      //   <p style={{ whiteSpace: "pre-wrap" }}>{newstate.response.message}</p>
+      // </Alert>
+    );
 }
 
-AlertDismissable.propTypes={
-    show:PropTypes.bool.isRequired,
-    message:PropTypes.string.isRequired
-};
+
 
 export default AlertDismissable;
