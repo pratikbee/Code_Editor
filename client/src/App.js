@@ -1,14 +1,10 @@
 import React,{useState} from "react";
 import "./App.scss";
 
-
-import { Form, FormGroup, Col, Button } from "react-bootstrap";
-import CompilerApi from "./api/CompilerApi.js";
-import LangSelector from "./LangSelector.js";
-import Acing from "./Acing";
-import StatusImage from "./StatusImage";
-import AlertDismissable from "./AlertDismissable";
-import Output from "./Output";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from "./Header";
+import Footer from "./Footer";
+import Home from "./Home";
 import Editor from "./Editor";
 
 
@@ -20,9 +16,17 @@ import Editor from "./Editor";
 const App = () => {
 
   return (
-  
-      <Editor/>
-    
+    <div>
+      <BrowserRouter>
+        <Header />
+
+        <Routes>
+          <Route exact path="/" element={<Home></Home>} />
+          <Route path="/editor" element={<Editor></Editor>} />
+        </Routes>
+      </BrowserRouter>
+      <Footer />
+    </div>
   );
 };
 

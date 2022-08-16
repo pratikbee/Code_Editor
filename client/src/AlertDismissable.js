@@ -31,16 +31,23 @@ const AlertDismissable = ({newstate,setnewState}) => {
         <p></p>
       </div>
     ) : (
-      <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Holy guacamole!</strong> You should check in on some of those
-        fields below.
-          <button
-            onClick={() => { handleDismiss() }}
+      <div
+        className="alert alert-warning alert-dismissible fade show"
+        role="alert"
+      >
+        <strong>Holy Oh snap! You got an error!</strong>
+        {newstate.response.message}
+        <button
+          onClick={() => {
+            handleDismiss();
+          }}
           type="button"
           class="btn-close"
           data-bs-dismiss="alert"
           aria-label="Close"
-        >Click to dismiss</button>
+        >
+          Click to dismiss
+        </button>
       </div>
       // <Alert
       //     variant="danger"
