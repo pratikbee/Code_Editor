@@ -4,7 +4,7 @@ module.exports={
   getLang(req,res)
 {
     
-    res.send('Hi kunal')
+    res.send('Hi ChatApp')
 }
 }
 

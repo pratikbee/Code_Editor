@@ -64,6 +64,7 @@ module.exports=
         status,
         message,
       };
+      console.log(JSON.stringify(result));
       return res.send(JSON.stringify(result))
               
     });
