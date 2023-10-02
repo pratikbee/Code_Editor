@@ -30,7 +30,7 @@ const Editor=()=>{
         }
        event.preventDefault();
        const { task } = state;
-       fetch("http://localhost:5000/code", {
+       fetch(`${process.env.API_URL}/code`, {
          method: "POST",
 
          body: JSON.stringify({
