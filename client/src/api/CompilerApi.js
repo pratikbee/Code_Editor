@@ -15,12 +15,7 @@ class CompilerApi {
   }
 
   static run(answer) {
-    return HttpHelper.fetch(
-      `localhost:5000/code`,
-      'POST',
-      this.requestHeaders(),
-      JSON.stringify(answer),
-    );
+    return HttpHelper.fetch(`${process.env.API_URL}/code`, "POST", this.requestHeaders(), JSON.stringify(answer));
   }
 }
 

@@ -14,7 +14,7 @@ const Header=()=>{
             </Link>
             <Link to="/editor">
               
-              <Button bsStyle="info" href="/editor">
+              <Button style={{marginLeft:20}} bsStyle="info" href="/editor">
                 Code Editor
               </Button>
             </Link>

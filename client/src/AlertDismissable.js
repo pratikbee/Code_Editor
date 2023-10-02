@@ -42,7 +42,7 @@ const AlertDismissable = ({newstate,setnewState}) => {
             handleDismiss();
           }}
           type="button"
-          class="btn-close"
+          className="btn-close"
           data-bs-dismiss="alert"
           aria-label="Close"
         >
