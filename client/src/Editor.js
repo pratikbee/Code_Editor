@@ -27,7 +27,8 @@ const Editor=()=>{
         if (state.selectedLang === "none") { 
             alert("Please select one language")
             return
-        }
+      }
+      console.log(`${process.env.API_URL}`)
        event.preventDefault();
        const { task } = state;
        fetch(`${process.env.API_URL}/code`, {
@@ -42,7 +43,7 @@ const Editor=()=>{
            "Content-type": "application/json; charset=UTF-8",
          },
        })
-         .then((response) => response.json())
+         .then((response) => { console.log(response); return (response.json()) })
 
          .then((res) => {
            const { response } = state;
